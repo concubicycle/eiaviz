@@ -53,7 +53,7 @@ const categoryRoot = {
 }
 
 const initialState = {
-    apiKey: 'insert yours here',
+    apiKey: 'yours here',
     categoryRoot: categoryRoot,
     categoryById: {
         371: categoryRoot
@@ -171,7 +171,7 @@ function customReducer(state, action) {
                 [action.id]: { $set: cat }
             })
 
-            const upd = buildTreeUpdateObject(cat.category_id, state.categoryRoot, { expanded: { $set: !cat.expanded } })
+            const upd = buildTreeUpdateObject(cat.category_id, state.categoryRoot, { expanded: { $set: cat.expanded } })
             return update(state, {
                 categoryRoot: upd,
                 categoryById: { $set: categoryById }
